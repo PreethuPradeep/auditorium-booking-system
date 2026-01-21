@@ -1,9 +1,15 @@
-Copyright (c) 2026 Peeta
+Source-Available Non-Commercial License
+Version 1.0
 
-This software is provided for educational, portfolio, and personal use.
+Copyright (c) 2026 PreethuPradeep
 
-You are permitted to view, copy, and modify this code for non-commercial purposes only.
+Permission is hereby granted to view, copy, and modify this software and its documentation for personal, educational, and portfolio purposes only.
 
-Commercial use, including offering this software as a service, selling it, or using it in a paid or revenue-generating product, is not permitted without explicit written permission from the author.
+Commercial use is strictly prohibited without prior written permission from the copyright holder. Commercial use includes, but is not limited to:
+- Offering this software as a hosted service (SaaS)
+- Selling this software or any derivative work
+- Using this software in a paid, revenue-generating, or client-facing production system
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+Redistribution of this software or derivative works must retain this license and copyright notice.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT.
