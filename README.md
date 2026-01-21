@@ -174,11 +174,13 @@ Use environment variables or local config files for:
 
 - Production deployment with Cloudflare and CI/CD (v6)
 
-## License
+## Commercial Use
 
-This project is licensed under the Apache License 2.0.
-See the LICENSE
- file for details.
+This project is source-available for educational and portfolio purposes.
+
+Commercial use, including offering this system as a service or using it in a paid or production environment, requires a separate commercial license.  
+Please contact the repository owner for licensing inquiries.
+
 
 ## Author
 
