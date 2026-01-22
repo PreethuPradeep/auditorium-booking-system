@@ -52,24 +52,6 @@ namespace Auditorium.Api
                     });
                     db.SaveChanges();
                 }
-                if (!db.Bookings.Any())
-                {
-                    db.Bookings.Add(new Models.Booking
-                    {
-                        Name = "Test User",
-                        Phone = "9999999999",
-                        Email = "test@example.com",
-                        Address1 = "Test Street",
-                        City = "Test City",
-                        Pincode = "000000",
-                        StartUtc = DateTime.UtcNow.AddDays(1),
-                        EndUtc = DateTime.UtcNow.AddDays(1).AddHours(2),
-                        EventType = "Test Event"
-                    });
-
-                    db.SaveChanges();
-                }
-
             }
 
             app.Run();
