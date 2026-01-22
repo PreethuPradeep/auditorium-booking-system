@@ -38,15 +38,22 @@ namespace Auditorium.Api
                 var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
                 if (!db.Users.Any())
                 {
-                    db.Users.Add(new Models.User
+                    db.Users.AddRange(new Models.User
                     {
                         Email = "manager@royal.com",
-                        PasswordHash = "admin123",
+                        PasswordHash = "manager123",
                         Role = "Manager"
+                    },
+                    new Models.User
+                    {
+                        Email = "sysadmin@royal.com",
+                        PasswordHash = "admin123",
+                        Role = "SysAdmin"
                     });
                     db.SaveChanges();
                 }
             }
+
             app.Run();
         }
     }
