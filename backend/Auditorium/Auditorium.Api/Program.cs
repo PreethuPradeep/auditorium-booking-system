@@ -38,15 +38,40 @@ namespace Auditorium.Api
                 var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
                 if (!db.Users.Any())
                 {
-                    db.Users.Add(new Models.User
+                    db.Users.AddRange(new Models.User
                     {
                         Email = "manager@royal.com",
-                        PasswordHash = "admin123",
+                        PasswordHash = "manager123",
                         Role = "Manager"
+                    },
+                    new Models.User
+                    {
+                        Email = "sysadmin@royal.com",
+                        PasswordHash = "admin123",
+                        Role = "SysAdmin"
                     });
                     db.SaveChanges();
                 }
+                if (!db.Bookings.Any())
+                {
+                    db.Bookings.Add(new Models.Booking
+                    {
+                        Name = "Test User",
+                        Phone = "9999999999",
+                        Email = "test@example.com",
+                        Address1 = "Test Street",
+                        City = "Test City",
+                        Pincode = "000000",
+                        StartUtc = DateTime.UtcNow.AddDays(1),
+                        EndUtc = DateTime.UtcNow.AddDays(1).AddHours(2),
+                        EventType = "Test Event"
+                    });
+
+                    db.SaveChanges();
+                }
+
             }
+
             app.Run();
         }
     }
