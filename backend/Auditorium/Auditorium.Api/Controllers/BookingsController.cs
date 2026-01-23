@@ -1,9 +1,10 @@
 ﻿using Auditorium.Api.Dto;
 using Auditorium.Api.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Auditorium.Api.Controller
+namespace Auditorium.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -27,6 +28,7 @@ namespace Auditorium.Api.Controller
                 return BadRequest(new {error = ex.Message});
             }
         }
+        [Authorize(Roles = "Manager,SysAdmin")]
         [HttpGet("day/{date}")]
         ///api/bookings/day/2026-02-03
         public async Task<IActionResult> GetByDate(string date)
@@ -38,6 +40,7 @@ namespace Auditorium.Api.Controller
             var bookings = await service.GetBookingsByDateAsync(dateValue);
             return Ok(bookings);
         }
+        [Authorize(Roles = "Manager,SysAdmin")]
         [HttpGet("month")]
         public async Task<IActionResult> GetByMonth([FromQuery] int year, [FromQuery] int month)
         {
