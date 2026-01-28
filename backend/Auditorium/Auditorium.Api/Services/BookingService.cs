@@ -53,6 +53,15 @@ namespace Auditorium.Api.Services
                 .OrderBy(b => b.StartUtc)
                 .ToListAsync();
         }
+
+        internal async Task UpdateStatusAsync(int id, string status)
+        {
+            var booking = await db.Bookings.FindAsync(id);
+            if (booking == null) throw new Exception("Booking not found!");
+            booking.Status = status;
+            await db.SaveChangesAsync();
+        }
+
         private void Validate(CreateBookingRequest r)
         {
             if (string.IsNullOrWhiteSpace(r.Name))
