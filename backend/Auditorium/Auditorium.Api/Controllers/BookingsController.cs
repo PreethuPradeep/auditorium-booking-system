@@ -15,19 +15,14 @@ namespace Auditorium.Api.Controllers
         {
             this.service = service;
         }
+        [AllowAnonymous]
         [HttpPost]
-        public async Task<IActionResult> Create(CreateBookingRequest request)
+        public async Task<IActionResult> Create([FromBody] CreateBookingRequest request)
         {
-            try
-            {
-                var id = await service.CreateBookingAsync(request);
-                return Ok(new { bookingId = id });
-            }
-            catch (ArgumentException ex)
-            {
-                return BadRequest(new {error = ex.Message});
-            }
+            var id = await service.CreateBookingAsync(request);
+            return Ok(new { bookingId = id });
         }
+
         [Authorize(Roles = "Manager,SysAdmin")]
         [HttpGet("day/{date}")]
         ///api/bookings/day/2026-02-03

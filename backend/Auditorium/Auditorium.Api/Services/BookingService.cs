@@ -28,6 +28,8 @@ namespace Auditorium.Api.Services
                 EndUtc = request.EndLocal.ToUniversalTime(),
                 Status = "Requested"
             };
+           
+
             db.Bookings.Add(booking);
             await db.SaveChangesAsync();
             return booking.Id;
@@ -56,17 +58,24 @@ namespace Auditorium.Api.Services
             if (string.IsNullOrWhiteSpace(r.Name))
                 throw new ArgumentException("Name is required");
 
-            if (r.StartLocal < DateTime.Now)
+            if (r.StartLocal < DateTime.UtcNow)
                 throw new ArgumentException("Cannot book past time");
 
-            var startHour = r.StartLocal.Hour;
-            var endHour = r.EndLocal.Hour;
+            var start = r.StartLocal;
+            var end = r.EndLocal;
 
-            if (startHour < 6 || endHour >= 24)
-                throw new ArgumentException("Bookings allowed only between 6 AM and 12 AM");
+            if (start.Hour < 6)
+                throw new ArgumentException("Bookings can only start after 6 AM");
 
-            if (r.EndLocal <= r.StartLocal)
+            if (end <= start)
                 throw new ArgumentException("End time must be after start time");
+
+            var midnight = start.Date.AddDays(1);
+
+            if (end > midnight)
+                throw new ArgumentException("Bookings must end by 12 AM (midnight)");
         }
+
+
     }
 }
