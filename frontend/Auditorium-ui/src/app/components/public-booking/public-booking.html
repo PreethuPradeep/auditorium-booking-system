@@ -1,0 +1,34 @@
+<h2>Request Booking</h2>
+
+<form (ngSubmit)="submit()" #bookingForm="ngForm">
+  <input placeholder="Name" [(ngModel)]="model.name" name="name" required />
+  <input placeholder="Phone" [(ngModel)]="model.phone" name="phone" required />
+  <input placeholder="Email" [(ngModel)]="model.email" name="email" />
+
+  <input placeholder="Address Line 1" [(ngModel)]="model.address1" name="address1" required />
+  <input placeholder="Address Line 2" [(ngModel)]="model.address2" name="address2" />
+  <input placeholder="City" [(ngModel)]="model.city" name="city" required />
+  <input placeholder="Pincode" type="number" [(ngModel)]="model.pincode" name="pincode" required />
+
+
+  <input type="datetime-local" [(ngModel)]="model.startLocal" name="startLocal" required />
+  <input type="datetime-local" [(ngModel)]="model.endLocal" name="endLocal" required />
+
+  <select [(ngModel)]="model.eventType" name="eventType" required>
+    <option value="">Select Event</option>
+    <option value="Wedding">Wedding</option>
+    <option value="Political">Political</option>
+    <option value="School">School</option>
+    <option value="Other">Other</option>
+  </select>
+
+  
+  <button type="submit" [disabled]="bookingForm.invalid">
+  Submit
+</button>
+
+</form>
+
+<div *ngIf="bookingId">
+  <p>Booking created. Reference ID: {{ bookingId }}</p>
+</div>
