@@ -1,0 +1,14 @@
+<input type="date" [(ngModel)]="selectedDate" (ngModel)="load()">
+<button (click)="load()">load</button>
+
+<table>
+    <tr *ngFor="let b of bookings">
+        <td>{{b.name}}</td>
+        <td>{{b.eventType}}</td>
+        <td>{{b.status}}</td>
+        <td>
+        <button (click)="approve(b.id)">Approve</button>
+        <button (click)="reject(b.id)">Reject</button>
+        </td>
+    </tr>
+</table>
