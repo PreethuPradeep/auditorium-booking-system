@@ -22,7 +22,7 @@ namespace Auditorium.Api.Dto
         public string City { get; set; } = string.Empty;
 
         [Required]
-        public int Pincode { get; set; }
+        public string Pincode { get; set; }
         //local time from client gets converted to utc before ending in db
         [Required]
         public DateTime StartLocal { get; set; }
